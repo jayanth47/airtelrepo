@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="antclass" basedir="." default="main">
+
+<property name="intro" value="Welcome to Ant class"/>
+<property name="day" value="Today is tuesday."/>
+<property file="${WORKSPACE}/days.properties"/>
+
+
+<!-- This is first target --> 
+<target name="one" description="this target prints messages">
+<echo message="Hi. This is Ant class target ONE"/>
+<echo>${day}${intro}</echo>
+</target>
+
+<target name="two" description="this target prints messages">
+<antcall target="three"/>
+<echo message="Hi. This is Ant class target TWO"/>
+<echo>${intro}</echo>
+<ant antfile="${WORKSPACE}/build1.xml"/>
+</target>
+
+
+<target name="three" description="this target prints messages">
+<echo message="Hi. This is Ant class target THREEE"/>
+<echo>${intro}</echo>
+</target>
+
+<!-- Build process start here -->
+
+<target name="wipeout" description="creating directories">
+<delete dir="${WORKSPACE}/build"/>
+</target>
+
+<target name="init" description="creating directories">
+<mkdir dir="${WORKSPACE}/build"/>
+<mkdir dir="${WORKSPACE}/build/conf"/>
+<mkdir dir="${WORKSPACE}/build/conf/classes"/>
+<mkdir dir="${WORKSPACE}/build/lib"/>
+<mkdir dir="${WORKSPACE}/build/logs"/>
+<mkdir dir="${WORKSPACE}/build/bin"/>
+</target>
+
+<target name="copy" description="copying files">
+<copy file="D:/java-files/Bye.java" todir="D:/build/conf"/>
+<copy file="D:/java-files/HelloWorld.java" todir="D:/build/conf"/>
+</target>
+
+<target name="compile" description="compiling">
+<javac srcdir="D:/build/conf" destdir="${WORKSPACE}/build/conf/classes" includeantruntime="false"/>
+</target>
+
+<target name="package" description="packaging">
+<zip destfile="${WORKSPACE}/build/lib/output.zip" basedir="D:/build"/>
+<jar destfile="${WORKSPACE}/build/lib/output.jar" basedir="D:/build"/>
+<!-- 
+<war>
+<ear>
+-->
+</target>
+
+
+
+<target name="main" description="this target prints messages" depends="two, one, wipeout, init, copy, compile, package">
+<echo message="Hi. This is Ant class target MAIN"/>
+<echo>${intro}</echo>
+<echo>first day is: ${day1}</echo>
+<echo>second day is: ${day2}</echo>
+<echo>third day is: ${day3}</echo>
+<echo>fourth day is: ${day4}</echo>
+<echo>fifth day is: ${day5}</echo>
+</target>
+
+
+</project>
