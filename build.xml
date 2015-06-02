@@ -41,12 +41,12 @@
 </target>
 
 <target name="copy" description="copying files">
-<copy file="D:/java-files/Bye.java" todir="D:/build/conf"/>
-<copy file="D:/java-files/HelloWorld.java" todir="D:/build/conf"/>
+<copy file="java-files/Bye.java" todir="build/conf"/>
+<copy file="java-files/HelloWorld.java" todir="build/conf"/>
 </target>
 
 <target name="compile" description="compiling">
-<javac srcdir="D:/build/conf" destdir="build/conf/classes" includeantruntime="false"/>
+<javac srcdir="build/conf" destdir="build/conf/classes" includeantruntime="false"/>
 </target>
 
 <target name="package" description="packaging">
