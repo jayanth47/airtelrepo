@@ -3,7 +3,7 @@
 
 <property name="intro" value="Welcome to Ant class"/>
 <property name="day" value="Today is tuesday."/>
-<property file="${WORKSPACE}/days.properties"/>
+<property file="days.properties"/>
 
 
 <!-- This is first target --> 
@@ -28,16 +28,16 @@
 <!-- Build process start here -->
 
 <target name="wipeout" description="creating directories">
-<delete dir="${WORKSPACE}/build"/>
+<delete dir="build"/>
 </target>
 
 <target name="init" description="creating directories">
-<mkdir dir="${WORKSPACE}/build"/>
-<mkdir dir="${WORKSPACE}/build/conf"/>
-<mkdir dir="${WORKSPACE}/build/conf/classes"/>
-<mkdir dir="${WORKSPACE}/build/lib"/>
-<mkdir dir="${WORKSPACE}/build/logs"/>
-<mkdir dir="${WORKSPACE}/build/bin"/>
+<mkdir dir="build"/>
+<mkdir dir="build/conf"/>
+<mkdir dir="build/conf/classes"/>
+<mkdir dir="build/lib"/>
+<mkdir dir="build/logs"/>
+<mkdir dir="build/bin"/>
 </target>
 
 <target name="copy" description="copying files">
@@ -46,12 +46,12 @@
 </target>
 
 <target name="compile" description="compiling">
-<javac srcdir="D:/build/conf" destdir="${WORKSPACE}/build/conf/classes" includeantruntime="false"/>
+<javac srcdir="D:/build/conf" destdir="build/conf/classes" includeantruntime="false"/>
 </target>
 
 <target name="package" description="packaging">
-<zip destfile="${WORKSPACE}/build/lib/output.zip" basedir="D:/build"/>
-<jar destfile="${WORKSPACE}/build/lib/output.jar" basedir="D:/build"/>
+<zip destfile="build/lib/output.zip" basedir="D:/build"/>
+<jar destfile="build/lib/output.jar" basedir="D:/build"/>
 <!-- 
 <war>
 <ear>
