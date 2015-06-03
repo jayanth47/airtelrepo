@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="hello world program" basedir="." default="info">
+		<target name="main" description="this is to test ant program">
+			<echo>Hello World..!</echo>
+		</target>
+		<target name="info">
+			<antcall target="main"/>
+			<echo>this is to test.!</echo>
+		</target>
+	</project>
